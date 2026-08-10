@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel — Câmara Madre de Deus</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+  <div class="admin-layout">
+    <header class="panel-header">
+      <div>
+        <h1>Painel de Notícias</h1>
+        <p>Gerencie as notícias exibidas no site da Câmara.</p>
+      </div>
+      <div class="panel-actions">
+        <button id="btn-nova" class="btn btn-primary" type="button">Nova notícia</button>
+        <button id="btn-sair" class="btn btn-secondary" type="button">Sair</button>
+      </div>
+    </header>
+
+    <div id="feedback" class="feedback" hidden></div>
+
+    <section class="panel-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Imagem</th>
+            <th>Tag</th>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="noticias-body"></tbody>
+      </table>
+    </section>
+  </div>
+
+  <div id="modal" class="modal" hidden>
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 id="modal-title">Nova notícia</h2>
+        <button id="btn-fechar-modal" class="btn btn-secondary" type="button">Fechar</button>
+      </div>
+
+      <form id="noticia-form">
+        <label for="tag">Tag / Data</label>
+        <input id="tag" name="tag" required placeholder="Ex: 10 de agosto">
+
+        <label for="nome">Título</label>
+        <input id="nome" name="nome" required>
+
+        <label for="descricao">Descrição</label>
+        <textarea id="descricao" name="descricao" required></textarea>
+
+        <label for="detalhamento">Detalhamento</label>
+        <textarea id="detalhamento" name="detalhamento" required></textarea>
+
+        <label for="imagem-arquivo">Imagem</label>
+        <input id="imagem-arquivo" type="file" accept="image/*">
+        <input id="imagem" name="imagem" type="hidden">
+        <img id="imagem-preview" class="preview" hidden alt="Pré-visualização">
+
+        <div class="modal-footer">
+          <button id="btn-cancelar" class="btn btn-secondary" type="button">Cancelar</button>
+          <button class="btn btn-primary" type="submit">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="js/painel.js"></script>
+</body>
+
+</html>

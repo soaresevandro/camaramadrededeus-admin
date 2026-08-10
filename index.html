@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Câmara Madre de Deus</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body class="login-page">
+  <div class="login-card">
+    <h1>Admin Câmara</h1>
+    <p class="subtitle">Entre com a URL da API e a chave de acesso.</p>
+
+    <p id="login-error" class="error"></p>
+
+    <form id="login-form">
+      <label for="api-url">URL da API</label>
+      <input id="api-url" type="url" value="http://localhost:3000" required>
+
+      <label for="api-key">Chave da API</label>
+      <input id="api-key" type="password" placeholder="sua-chave-secreta" required>
+
+      <button class="btn btn-primary" type="submit">Entrar</button>
+    </form>
+  </div>
+
+  <script type="module" src="js/login.js"></script>
+</body>
+
+</html>
