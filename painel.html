@@ -28,10 +28,10 @@
         <thead>
           <tr>
             <th>Imagem</th>
-            <th>Tag</th>
             <th>Título</th>
-            <th>Descrição</th>
-            <th>Ações</th>
+            <th>Resumo</th>
+            <th>Conteúdo</th>
+            <th>Detalhamento</th>
           </tr>
         </thead>
         <tbody id="noticias-body"></tbody>
@@ -47,14 +47,15 @@
       </div>
 
       <form id="noticia-form">
-        <label for="tag">Tag / Data</label>
-        <input id="tag" name="tag" required placeholder="Ex: 10 de agosto">
 
         <label for="nome">Título</label>
         <input id="nome" name="nome" required>
 
-        <label for="descricao">Descrição</label>
-        <textarea id="descricao" name="descricao" required></textarea>
+        <label for="resumo">Resumo</label>
+        <textarea id="resumo" name="resumo" required></textarea>
+
+        <label for="conteudo">Conteúdo</label>
+        <textarea id="conteudo" name="conteudo" required></textarea>        
 
         <label for="detalhamento">Detalhamento</label>
         <textarea id="detalhamento" name="detalhamento" required></textarea>

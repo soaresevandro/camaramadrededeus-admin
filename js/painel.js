@@ -40,9 +40,10 @@ function openModal(noticia = null) {
   imagemArquivo = null;
   modalTitle.textContent = noticia ? "Editar notícia" : "Nova notícia";
 
-  form.tag.value = noticia?.tag ?? "";
+  form.titulo.value = noticia?.titulo ?? "";
   form.nome.value = noticia?.nome ?? "";
-  form.descricao.value = noticia?.descricao ?? "";
+  form.resumo.value = noticia?.resumo ?? "";
+  form.conteudo.value = noticia?.conteudo ?? "";
   form.detalhamento.value = noticia?.detalhamento ?? "";
   imagemHidden.value = noticia?.imagem ?? "";
   imagemInput.value = "";
@@ -79,9 +80,10 @@ function renderTable() {
       (noticia) => `
       <tr>
         <td><img src="${apiUrl}/${noticia.imagem}" alt="" class="thumb"></td>
-        <td>${noticia.tag}</td>
-        <td>${noticia.nome}</td>
-        <td class="descricao-cell">${noticia.descricao}</td>
+        <td>${noticia.titulo}</td>
+        <td>${noticia.resumo}</td>
+        <td class="descricao-cell">${noticia.conteudo}</td>
+        <td class="descricao-cell">${noticia.detalhamento}</td>
         <td class="actions">
           <button type="button" class="btn btn-secondary" data-edit="${noticia.id}">Editar</button>
           <button type="button" class="btn btn-danger" data-delete="${noticia.id}">Excluir</button>
@@ -102,9 +104,9 @@ form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const payload = {
-    tag: form.tag.value.trim(),
-    nome: form.nome.value.trim(),
-    descricao: form.descricao.value.trim(),
+    titulo: form.titulo.value.trim(),
+    resumo: form.resumo.value.trim(),
+    conteudo: form.conteudo.value.trim(),
     detalhamento: form.detalhamento.value.trim(),
     imagem: imagemHidden.value.trim(),
   };
