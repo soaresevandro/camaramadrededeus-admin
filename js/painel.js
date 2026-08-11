@@ -49,7 +49,7 @@ function openModal(noticia = null) {
   imagemInput.value = "";
 
   if (noticia?.imagem) {
-    imagemPreview.src = `${apiUrl}/${noticia.imagem}`;
+    imagemPreview.src = `${apiUrl}/uploads/${noticia.imagem}`;
     imagemPreview.hidden = false;
   } else {
     imagemPreview.hidden = true;

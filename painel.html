@@ -7,10 +7,45 @@
   <title>Painel — Câmara Madre de Deus</title>
   <link rel="stylesheet" href="css/admin.css">
   <link rel="icon" href="favicon.png">
+  <style>
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      background-color: #004080;
+      padding: 10px 20px;
+      z-index: 1000;
+      gap: 20px;
+    }
 
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    body {
+      margin-top: 60px;
+      /* espaço para não ficar escondido atrás do menu */
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Menu superior fixo -->
+  <nav>
+    <a href="painel.html">TOTEM</a>
+    <a href="camara.html">CÂMARA</a>
+  </nav>
   <div class="admin-layout">
     <header class="panel-header">
       <div>

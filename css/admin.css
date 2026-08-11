@@ -23,6 +23,34 @@ body {
   background: linear-gradient(135deg, #0f0f1e 0%, #1f1f3a 100%);
   color: var(--text);
   min-height: 100vh;
+  margin-top: 60px;
+}
+
+nav {
+  position: fixed;
+  /* fixa no topo */
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* ocupa toda a largura */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #004080;
+  padding: 10px 20px;
+  z-index: 1000;
+  /* garante que fique acima do conteúdo */
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+nav a:hover {
+  text-decoration: underline;
 }
 
 a {
