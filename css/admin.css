@@ -214,6 +214,8 @@ th {
 }
 
 .modal {
+  display: none;
+  /* padrão: escondido */
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.65);
@@ -222,6 +224,16 @@ th {
   padding: 20px;
   z-index: 10;
 }
+
+.modal.is-open {
+  display: grid;
+  /* só aparece quando tem a classe */
+}
+
+.modal[hidden] {
+  display: none !important;
+}
+
 
 .modal-card {
   width: min(640px, 100%);

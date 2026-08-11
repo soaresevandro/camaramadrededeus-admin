@@ -44,7 +44,7 @@ function openModal(noticia = null) {
   form.resumo.value = noticia?.resumo ?? "";
   form.conteudo.value = noticia?.conteudo ?? "";
   form.detalhamento.value = noticia?.detalhamento ?? "";
-  form.publicar.value = noticia?.publicar ?? "";
+  form.publicar.checked = !!noticia?.publicar;   // ✅ ajuste aqui
   imagemHidden.value = noticia?.imagem ?? "";
   imagemInput.value = "";
 
@@ -56,10 +56,12 @@ function openModal(noticia = null) {
   }
 
   modal.hidden = false;
+  modal.classList.add("is-open");
 }
 
+
 function closeModal() {
-  modal.hidden = true;
+  modal.classList.remove("is-open");
   editandoId = null;
   form.reset();
   imagemPreview.hidden = true;
@@ -79,7 +81,7 @@ function renderTable() {
     .map(
       (noticia) => `
       <tr>
-        <td><img src="${apiUrl}/${noticia.imagem}" alt="" class="thumb"></td>
+        <td><img src="${apiUrl}/uploads/${noticia.imagem}" alt="" class="thumb"></td>
         <td>${noticia.titulo}</td>
         <td>${noticia.resumo}</td>
         <td class="descricao-cell">${noticia.conteudo}</td>
@@ -98,13 +100,14 @@ function renderTable() {
 async function loadNoticias() {
   const data = await listNoticias(apiUrl);
   noticias = data.noticias;
+  console.log("Resposta da API listNoticias:", data);
   renderTable();
 }
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   const data = new FormData(form);
-  
+
 
   const payload = {
     data,
