@@ -42,6 +42,7 @@ function openModal(noticia = null) {
 
   form.titulo.value = noticia?.titulo ?? "";
   form.conteudo.value = noticia?.conteudo ?? "";
+  form.publicar.checked = !!noticia?.publicar;
   imagemHidden.value = noticia?.imagem ?? "";
   imagemInput.value = "";
 
@@ -68,7 +69,7 @@ function renderTable() {
   if (!noticias.length) {
     tableBody.innerHTML = `
       <tr>
-        <td colspan="5" class="empty">Nenhuma mensagem cadastrada.</td>
+        <td colspan="4" class="empty">Nenhuma mensagem cadastrada.</td>
       </tr>
     `;
     return;
@@ -82,6 +83,9 @@ function renderTable() {
         <td><img src="${apiUrl}/uploads/${noticia.imagem}" alt="" class="thumb"></td>
         <td>${noticia.titulo}</td>
         <td>${noticia.conteudo}</td>
+        <td class="descricao-cell">
+          ${noticia.publicar ? "SIM" : "NÃO"}
+        </td>
         <td class="actions">
           <button type="button" class="btn btn-secondary" data-edit="${noticia.id}">Editar</button>
           <button type="button" class="btn btn-danger" data-delete="${noticia.id}">Excluir</button>
@@ -95,22 +99,23 @@ function renderTable() {
 async function loadNoticias() {
   const data = await listNoticias(apiUrl);
   noticias = data.noticias;
-  console.log("Resposta da API listNoticias:", data);
   renderTable();
 }
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
-  const data = new FormData(form);
-
-
+  const data = new Date().toLocaleDateString("pt-BR");
   const payload = {
+    tipo: "M",
     data,
     publicar: form.publicar.checked,
     titulo: form.titulo.value.trim(),
+    resumo: "resumo",
     conteudo: form.conteudo.value.trim(),
+    detalhamento: "detalhamento",
     imagem: imagemHidden.value.trim(),
   };
+  console.log('payload: ', payload);
 
   try {
     if (imagemArquivo) {
@@ -162,7 +167,7 @@ tableBody.addEventListener("click", async (event) => {
 
   if (deleteId) {
     const noticia = noticias.find((item) => item.id === Number(deleteId));
-    const confirmar = window.confirm(`Excluir a mensagem "${noticia.nome}"?`);
+    const confirmar = window.confirm(`Excluir a mensagem "${noticia.titulo}"?`);
 
     if (!confirmar) return;
 

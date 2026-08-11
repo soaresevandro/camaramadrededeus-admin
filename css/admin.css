@@ -158,6 +158,7 @@ textarea:focus {
 .error,
 .feedback.error {
   color: var(--danger);
+  z-index: 1000;
 }
 
 .feedback {

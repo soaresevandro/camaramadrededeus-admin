@@ -29,7 +29,6 @@ function showFeedback(message, type = "success") {
   feedback.textContent = message;
   feedback.className = `feedback ${type}`;
   feedback.hidden = false;
-
   setTimeout(() => {
     feedback.hidden = true;
   }, 4000);
@@ -87,7 +86,9 @@ function renderTable() {
         <td>${noticia.resumo}</td>
         <td class="descricao-cell">${noticia.conteudo}</td>
         <td class="descricao-cell">${noticia.detalhamento}</td>
-        <td class="descricao-cell">${noticia.publicar}</td>
+        <td class="descricao-cell">
+          ${noticia.publicar ? "SIM" : "NÃO"}
+        </td>
         <td class="actions">
           <button type="button" class="btn btn-secondary" data-edit="${noticia.id}">Editar</button>
           <button type="button" class="btn btn-danger" data-delete="${noticia.id}">Excluir</button>
@@ -101,16 +102,14 @@ function renderTable() {
 async function loadNoticias() {
   const data = await listNoticias(apiUrl);
   noticias = data.noticias;
-  console.log("Resposta da API listNoticias:", data);
   renderTable();
 }
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
-  const data = new FormData(form);
-
-
+  const data = new Date().toLocaleDateString("pt-BR");
   const payload = {
+    tipo: "N",
     data,
     publicar: form.publicar.checked,
     titulo: form.titulo.value.trim(),
@@ -170,7 +169,7 @@ tableBody.addEventListener("click", async (event) => {
 
   if (deleteId) {
     const noticia = noticias.find((item) => item.id === Number(deleteId));
-    const confirmar = window.confirm(`Excluir a notícia "${noticia.nome}"?`);
+    const confirmar = window.confirm(`Excluir a notícia "${noticia.titulo}"?`);
 
     if (!confirmar) return;
 
