@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Painel — Câmara Madre de Deus</title>
   <link rel="stylesheet" href="css/admin.css">
+  <link rel="icon" href="favicon.png">
+
 </head>
 
 <body>
@@ -32,6 +34,7 @@
             <th>Resumo</th>
             <th>Conteúdo</th>
             <th>Detalhamento</th>
+            <th>Publicar</th>
           </tr>
         </thead>
         <tbody id="noticias-body"></tbody>
@@ -48,8 +51,8 @@
 
       <form id="noticia-form">
 
-        <label for="nome">Título</label>
-        <input id="nome" name="nome" required>
+        <label for="titulo">Título</label>
+        <input id="titulo" name="titulo" required>
 
         <label for="resumo">Resumo</label>
         <textarea id="resumo" name="resumo" required></textarea>
@@ -64,6 +67,9 @@
         <input id="imagem-arquivo" type="file" accept="image/*">
         <input id="imagem" name="imagem" type="hidden">
         <img id="imagem-preview" class="preview" hidden alt="Pré-visualização">
+
+        <label for="publicar">Publicar</label>
+        <input type="checkbox" id="publicar" name="publicar" checked>            
 
         <div class="modal-footer">
           <button id="btn-cancelar" class="btn btn-secondary" type="button">Cancelar</button>

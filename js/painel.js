@@ -41,10 +41,10 @@ function openModal(noticia = null) {
   modalTitle.textContent = noticia ? "Editar notícia" : "Nova notícia";
 
   form.titulo.value = noticia?.titulo ?? "";
-  form.nome.value = noticia?.nome ?? "";
   form.resumo.value = noticia?.resumo ?? "";
   form.conteudo.value = noticia?.conteudo ?? "";
   form.detalhamento.value = noticia?.detalhamento ?? "";
+  form.publicar.value = noticia?.publicar ?? "";
   imagemHidden.value = noticia?.imagem ?? "";
   imagemInput.value = "";
 
@@ -84,6 +84,7 @@ function renderTable() {
         <td>${noticia.resumo}</td>
         <td class="descricao-cell">${noticia.conteudo}</td>
         <td class="descricao-cell">${noticia.detalhamento}</td>
+        <td class="descricao-cell">${noticia.publicar}</td>
         <td class="actions">
           <button type="button" class="btn btn-secondary" data-edit="${noticia.id}">Editar</button>
           <button type="button" class="btn btn-danger" data-delete="${noticia.id}">Excluir</button>
@@ -102,8 +103,12 @@ async function loadNoticias() {
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
+  const data = new FormData(form);
+  
 
   const payload = {
+    data,
+    publicar: form.publicar.checked,
     titulo: form.titulo.value.trim(),
     resumo: form.resumo.value.trim(),
     conteudo: form.conteudo.value.trim(),
