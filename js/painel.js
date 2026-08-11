@@ -78,6 +78,7 @@ function renderTable() {
   }
 
   tableBody.innerHTML = noticias
+    .filter((noticia) => noticia.tipo === "N") // filtra apenas tipo Noticias
     .map(
       (noticia) => `
       <tr>
