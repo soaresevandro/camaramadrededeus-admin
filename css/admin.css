@@ -34,11 +34,12 @@ nav {
   width: 100%;
   /* ocupa toda a largura */
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
   background-color: #004080;
   padding: 10px 20px;
   z-index: 1000;
+  gap: 20px;
   /* garante que fique acima do conteúdo */
 }
 

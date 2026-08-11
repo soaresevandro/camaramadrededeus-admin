@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Totem Madre de Deus</title>
+  <title>Painel — Câmara Madre de Deus</title>
   <link rel="stylesheet" href="css/admin.css">
   <link rel="icon" href="favicon.png">
 </head>
@@ -17,11 +17,11 @@
   <div class="admin-layout">
     <header class="panel-header">
       <div>
-        <h1>Totem de Notícias</h1>
-        <p>Gerencie as notícias exibidas no TOTEM.</p>
+        <h1>Painel de Mensagens</h1>
+        <p>Gerencie as mensagens exibidas na sessão da Câmara.</p>
       </div>
       <div class="panel-actions">
-        <button id="btn-nova" class="btn btn-primary" type="button">Nova notícia</button>
+        <button id="btn-nova" class="btn btn-primary" type="button">Nova mensagem</button>
         <button id="btn-sair" class="btn btn-secondary" type="button">Sair</button>
       </div>
     </header>
@@ -34,10 +34,7 @@
           <tr>
             <th>Imagem</th>
             <th>Título</th>
-            <th>Resumo</th>
             <th>Conteúdo</th>
-            <th>Detalhamento</th>
-            <th>Publicar</th>
           </tr>
         </thead>
         <tbody id="noticias-body"></tbody>
@@ -48,7 +45,7 @@
   <div id="modal" class="modal" hidden>
     <div class="modal-card">
       <div class="modal-header">
-        <h2 id="modal-title">Nova notícia</h2>
+        <h2 id="modal-title">Nova mensagem</h2>
         <button id="btn-fechar-modal" class="btn btn-secondary" type="button">Fechar</button>
       </div>
 
@@ -57,14 +54,8 @@
         <label for="titulo">Título</label>
         <input id="titulo" name="titulo" required>
 
-        <label for="resumo">Resumo</label>
-        <textarea id="resumo" name="resumo" required></textarea>
-
         <label for="conteudo">Conteúdo</label>
         <textarea id="conteudo" name="conteudo" required></textarea>
-
-        <label for="detalhamento">Detalhamento</label>
-        <textarea id="detalhamento" name="detalhamento" required></textarea>
 
         <label for="imagem-arquivo">Imagem</label>
         <input id="imagem-arquivo" type="file" accept="image/*">
@@ -81,7 +72,7 @@
     </div>
   </div>
 
-  <script type="module" src="js/painel.js"></script>
+  <script type="module" src="js/camara.js"></script>
 </body>
 
 </html>
