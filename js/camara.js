@@ -25,6 +25,17 @@ let noticias = [];
 let editandoId = null;
 let imagemArquivo = null;
 
+function escapeHtml(value) {
+  if (value === null || value === undefined) return "";
+
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 function showFeedback(message, type = "success") {
   feedback.textContent = message;
   feedback.className = `feedback ${type}`;
@@ -80,15 +91,15 @@ function renderTable() {
     .map(
       (noticia) => `
       <tr>
-        <td><img src="${apiUrl}/uploads/${noticia.imagem}" alt="" class="thumb"></td>
-        <td>${noticia.titulo}</td>
-        <td>${noticia.conteudo}</td>
+        <td><img src="${escapeHtml(apiUrl)}/uploads/${escapeHtml(noticia.imagem)}" alt="" class="thumb"></td>
+        <td>${escapeHtml(noticia.titulo)}</td>
+        <td>${escapeHtml(noticia.conteudo)}</td>
         <td class="descricao-cell">
           ${noticia.publicar ? "SIM" : "NÃO"}
         </td>
         <td class="actions">
-          <button type="button" class="btn btn-secondary" data-edit="${noticia.id}">Editar</button>
-          <button type="button" class="btn btn-danger" data-delete="${noticia.id}">Excluir</button>
+          <button type="button" class="btn btn-secondary" data-edit="${escapeHtml(noticia.id)}">Editar</button>
+          <button type="button" class="btn btn-danger" data-delete="${escapeHtml(noticia.id)}">Excluir</button>
         </td>
       </tr>
     `

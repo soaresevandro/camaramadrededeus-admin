@@ -36,3 +36,20 @@ Acesse `http://localhost:5173`.
 - Excluir notícia
 
 As imagens enviadas ficam na pasta raiz do projeto principal e são servidas automaticamente pelo backend.
+
+
+git add .
+git commit -m "Primeiro commit"
+git push
+
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/soaresevandro/soaresevandro-api.git
+git push -u origin main
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/soaresevandro/soaresevandro/soaresevandro-api
+git branch -M main
+git push -u origin main
