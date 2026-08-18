@@ -52,6 +52,7 @@ function openModal(noticia = null) {
   modalTitle.textContent = noticia ? "Editar mensagem" : "Nova mensagem";
 
   form.titulo.value = noticia?.titulo ?? "";
+  form.resumo.value = noticia?.resumo ?? "";
   form.conteudo.value = noticia?.conteudo ?? "";
   form.publicar.checked = !!noticia?.publicar;
   imagemHidden.value = noticia?.imagem ?? "";
@@ -93,6 +94,7 @@ function renderTable() {
       <tr>
         <td><img src="${escapeHtml(apiUrl)}/uploads/${escapeHtml(noticia.imagem)}" alt="" class="thumb"></td>
         <td>${escapeHtml(noticia.titulo)}</td>
+        <td>${escapeHtml(noticia.resumo)}</td>        
         <td>${escapeHtml(noticia.conteudo)}</td>
         <td class="descricao-cell">
           ${noticia.publicar ? "SIM" : "NÃO"}
@@ -121,7 +123,7 @@ form.addEventListener("submit", async (event) => {
     data,
     publicar: form.publicar.checked,
     titulo: form.titulo.value.trim(),
-    resumo: "resumo",
+    resumo: form.resumo.value.trim(),
     conteudo: form.conteudo.value.trim(),
     detalhamento: "detalhamento",
     imagem: imagemHidden.value.trim(),
